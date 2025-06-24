@@ -6,7 +6,7 @@ class View(ft.UserControl):
         super().__init__()
         # page stuff
         self._page = page
-        self._page.title = "Gestore Corsi edizione 2025"
+        self._page.title = None
         self._page.horizontal_alignment = 'CENTER'
         self._page.theme_mode = ft.ThemeMode.LIGHT
         # controller (it is not initialized. Must be initialized in the main, after the controller is created)
@@ -24,8 +24,7 @@ class View(ft.UserControl):
 
 
     def load_interface(self):
-        # title
-        self._title = ft.Text("Hello World", color="blue", size=24)
+        self._title = ft.Text("Gestore Corsi", color="blue", size=24)
         self._page.controls.append(self._title)
 
         self.ddPD = ft.Dropdown(label="Periodo Didattico",
@@ -45,8 +44,8 @@ class View(ft.UserControl):
 
         self.lvTxtOut = ft.ListView(expand=True)
 
-        row1 = ft.Row([self.ddPD, self.btnPrintCorsiPD, self.btnPrintIscrittiCorsiPD])
-        row2 = ft.Row([self.ddCodins, self.btnPrintIscrittiCodins, self.btnPrintCDSCodins])
+        row1 = ft.Row([self.ddPD, self.btnPrintCorsiPD, self.btnPrintIscrittiCorsiPD], alignment=ft.MainAxisAlignment.CENTER)
+        row2 = ft.Row([self.ddCodins, self.btnPrintIscrittiCodins, self.btnPrintCDSCodins], alignment=ft.MainAxisAlignment.CENTER)
         self._page.add( row1, row2, self.lvTxtOut)
         self._page.update()
 
